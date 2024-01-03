@@ -2,6 +2,9 @@
 
 use Themosis\Core\Application;
 
+use Themosis\Support\Facades\Page;
+use Themosis\Support\Section;
+
 /*
 |--------------------------------------------------------------------------
 | Bootstrap Theme
@@ -136,3 +139,32 @@ $theme->support($theme->config('support', []));
 |
 */
 $theme->templates($theme->config('templates', []));
+
+
+/* CUSTOM Themosis W.T. by Leon Kuijf */
+
+$page = Page::make('demo-page', 'Very Long Title Rendered On Page')
+    ->setMenu('Demo Page')
+    ->set();
+// $page->route('/', function () {
+//     return view('admin.home');
+// });
+$page->addSections([
+    new Section('general', 'General'),
+    new Section('social', 'Social')
+]);
+$page->addSettings([
+    'general' => [
+        Field::text('title', [
+            'rules' => 'required|min:6'
+        ]),
+        Field::textarea('comment')
+    ],
+    'social' => [
+        Field::text('twitter', [
+            'rules' => 'required|url'
+        ])
+    ]
+]);
+
+

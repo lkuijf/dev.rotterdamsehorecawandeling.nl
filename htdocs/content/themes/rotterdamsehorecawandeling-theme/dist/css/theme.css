@@ -892,3 +892,7 @@ object {
 .gallery-caption {
   display: block;
 }
+
+body {
+  background-color: lightskyblue;
+}

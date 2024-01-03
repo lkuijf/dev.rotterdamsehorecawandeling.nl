@@ -6,3 +6,6 @@
  * The routes defined inside your theme override any similar routes
  * defined on the application global scope.
  */
+Route::get('page', function () {
+    return view('pages.default');
+});
