@@ -191,6 +191,9 @@ function myNewBlock(){
 		Field::make( 'text', 'heading', __( 'Block Heading' ) ),
 		Field::make( 'image', 'image', __( 'Block Image' ) ),
 		Field::make( 'rich_text', 'content', __( 'Block Content' ) ),
+
+        // Field::text('te1'),
+        // Field::text('te2')
 	) )
     ->set_description( __( 'A simple block with some sheittt' ) )
     // ->set_category( 'layout' )
@@ -219,8 +222,9 @@ function myNewBlock(){
     */
 
 	->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
+        /**** 10-1-2024 Leon Kuijf. Set some initial values. Adding fields AFTER block has already been created ends up in an undefined array key ****/
+        if(!isset($fields['anchor']) $fields['anchor'] = '');
 		?>
-
         <a class="wtanchor" id="<?php echo esc_html( $fields['anchor'] ); ?>"></a>
 		<div class="wtblock">
 			<div class="wtblock__heading">
