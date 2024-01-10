@@ -225,21 +225,26 @@ function myNewBlock(){
         /**** 10-1-2024 Leon Kuijf. Set some initial values. Adding fields AFTER block has already been created ends up in an undefined array key ****/
         if(!isset($fields['anchor'])) $fields['anchor'] = '';
 		?>
-        <a class="wtanchor" id="<?php echo esc_html( $fields['anchor'] ); ?>"></a>
-		<div class="wtblock">
-			<div class="wtblock__heading">
-				<h1><?php echo esc_html( $fields['heading'] ); ?></h1>
-			</div><!-- /.block__heading -->
-
-			<div class="wtblock__image">
-				<?php echo wp_get_attachment_image( $fields['image'], 'full' ); ?>
-			</div><!-- /.block__image -->
-
-			<div class="wtblock__content">
-				<?php echo apply_filters( 'the_content', $fields['content'] ); ?>
-			</div><!-- /.block__content -->
-		</div><!-- /.block -->
-
+        <?php
+            //echo wp_get_attachment_image( $fields['image'], 'full' );
+            list($url, $width, $height) = wp_get_attachment_image_src($fields['image'], 'full');
+        ?>
+        <div class="wtBlock">
+            <div class="wtbImage" style="background-image:url('<?php echo parse_url($url, PHP_URL_PATH) ?>')">&nbsp;</div><!-- /.wtbImage -->
+            <div class="wtbContent">
+                <div class="wtbText">
+                    <div class="wtbInnerText">
+                        <div class="wtb_heading">
+                            <a class="wtanchor" id="<?php echo esc_html( $fields['anchor'] ); ?>"></a>
+                            <h1><?php echo esc_html( $fields['heading'] ); ?></h1>
+                        </div><!-- /.wtb_heading -->
+                        <div class="wtb_content">
+                            <?php echo apply_filters( 'the_content', $fields['content'] ); ?>
+                        </div><!-- /.wtb_content -->
+                    </div><!-- /.wtbInnerText -->
+                </div><!-- /.wtbText -->
+            </div><!-- /.wtbContent -->
+        </div><!-- /.wtBlock -->
 		<?php
 	} );
 }
