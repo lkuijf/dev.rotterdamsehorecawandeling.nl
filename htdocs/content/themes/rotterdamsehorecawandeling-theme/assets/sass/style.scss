@@ -91,6 +91,116 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --------------------------------------------------------------*/
 @import "media/media";
 
+/****** Themosis boilerplate zorgt al voor border-box e.d. ****/
+/*
+html, body {
+    margin: 0;
+    padding: 0;
+}
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+*/
+
+$sbp1_desktop: 1200px; // ScreenBreakpoint for Desktops
+$sbp2_laptop: 1024px; // ScreenBreakpoint for Laptops
+$sbp3_tablet: 768px; // // ScreenBreakpoint for iPads/Tablets
+$sbp4_mobile: 480px; // ScreenBreakpoint for Mobile devices
+
+// $logoHolderHeight: 200px;
+$logoArea: 200px;
+$menuHeight: 50px;
+
 body {
-	background-color: lightsalmon;
+	background-color: lightgray;
+	padding-top: calc($logoArea + $menuHeight);
+}
+html {
+    scroll-behavior: smooth;
+}
+img {
+    vertical-align: middle; // removes bottom 3px margin.
+}
+
+header#masthead {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	background-color: #FFF;
+	.site-branding {
+		text-align: center;
+		img {
+			height: $logoArea;
+			width: $logoArea;
+			object-fit: contain;
+		}
+		.site-title, .site-description {
+			display: none;
+		}
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		background-color: #008100;
+		display: flex;
+		list-style-type: none;
+		li {
+			flex: 1 1 auto;
+			text-align: center;
+			a {
+				display: block;
+				height: 100%;
+				padding: 0 5px;
+				line-height: $menuHeight;
+				text-decoration: none;
+				color: #FFF;
+				&.activeButton {
+					background-color: #005700;
+				}
+				// @media (min-width: $screenBreakpoint+1) {
+				//     &:hover {
+				//         background-color: #005700;
+				//     }
+				// }
+				// @media (max-width: $screenBreakpointMobiles) {
+				//     line-height: $menuHeight - 25px;
+				//     font-size: 14px;
+				// }
+			}
+		}
+	}
+}
+a.wtanchor {
+	display: block;
+    position: relative;
+    top: calc(($logoArea + $menuHeight) * -1);
+    visibility: hidden;
+}
+footer#colophon {
+    background-color: #ecffec;
+    min-height: 300px;
+	.site-info {
+		padding: 50px;
+		width: 70%;
+		@media (max-width: $sbp3_tablet) {
+			width: 90%;
+		}
+        @media (max-width: $sbp4_mobile) {
+            padding: 20px;
+        }
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+
+    // div {
+    //     @include innerTextCentering;
+    //     padding: 50px;
+    //     @media (max-width: $screenBreakpointMobiles) {
+    //         padding: 20px;
+    //     }
+    // }
 }

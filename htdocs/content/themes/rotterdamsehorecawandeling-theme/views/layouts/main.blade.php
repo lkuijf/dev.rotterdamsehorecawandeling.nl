@@ -40,31 +40,32 @@
                 @yield('content')
             </main>
         </div>
-        <!-- Sidebar -->
+        {{-- <!-- Sidebar -->
         @if(is_active_sidebar('sidebar-1'))
             <aside id="secondary" class="widget-area">
                 @php(dynamic_sidebar('sidebar-1'))
             </aside>
         @endif
-        <!-- End sidebar -->
+        <!-- End sidebar --> --}}
     </div><!-- #content -->
 
     <footer id="colophon" class="site-footer">
         <div class="site-info">
-            <a href="{{ esc_url(__('https://wordpress.org/', THEME_TD)) }}">
+            {!! get_option('th_footer_text') !!}
+            {{-- <a href="{{ esc_url(__('https://wordpress.org/', THEME_TD)) }}">
                 {{ sprintf(esc_html__('Proudly powered by %s', THEME_TD), 'WordPress') }}
             </a>
             <span class="sep"> | </span>
-            {!! sprintf(esc_html__('Theme: %1$s by %2$s.', THEME_TD), 'Themosis', '<a href="https://framework.themosis.com">Themosis Framework</a>') !!}
+            {!! sprintf(esc_html__('Theme: %1$s by %2$s.', THEME_TD), 'Themosis', '<a href="https://framework.themosis.com">Themosis Framework</a>') !!} --}}
         </div><!-- .site-info -->
     </footer><!-- #colophon -->
 </div><!-- #page -->
 
 @footer
 
-{{-- @env('local')
+@env('local')
     <script src="http://localhost:35729/livereload.js"></script>
-@endenv --}}
+@endenv
 
 </body>
 </html>

@@ -893,6 +893,97 @@ object {
   display: block;
 }
 
+/****** Themosis boilerplate zorgt al voor border-box e.d. ****/
+/*
+html, body {
+    margin: 0;
+    padding: 0;
+}
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+*/
 body {
-  background-color: lightsalmon;
+  background-color: lightgray;
+  padding-top: 250px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  vertical-align: middle;
+}
+
+header#masthead {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: #FFF;
+}
+header#masthead .site-branding {
+  text-align: center;
+}
+header#masthead .site-branding img {
+  height: 200px;
+  width: 200px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+header#masthead .site-branding .site-title, header#masthead .site-branding .site-description {
+  display: none;
+}
+header#masthead ul {
+  margin: 0;
+  padding: 0;
+  background-color: #008100;
+  display: flex;
+  list-style-type: none;
+}
+header#masthead ul li {
+  flex: 1 1 auto;
+  text-align: center;
+}
+header#masthead ul li a {
+  display: block;
+  height: 100%;
+  padding: 0 5px;
+  line-height: 50px;
+  text-decoration: none;
+  color: #FFF;
+}
+header#masthead ul li a.activeButton {
+  background-color: #005700;
+}
+
+a.wtanchor {
+  display: block;
+  position: relative;
+  top: -250px;
+  visibility: hidden;
+}
+
+footer#colophon {
+  background-color: #ecffec;
+  min-height: 300px;
+}
+footer#colophon .site-info {
+  padding: 50px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 768px) {
+  footer#colophon .site-info {
+    width: 90%;
+  }
+}
+@media (max-width: 480px) {
+  footer#colophon .site-info {
+    padding: 20px;
+  }
 }

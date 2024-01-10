@@ -143,26 +143,34 @@ $theme->templates($theme->config('templates', []));
 
 /* CUSTOM Themosis W.T. by Leon Kuijf */
 
-$page = Page::make('demo-page', 'Very Long Title Rendered On Page')
-    ->setMenu('Demo Page')
+$page = Page::make('website-options', __( 'Set your website options' ))
+    ->setMenu('Website options')
     ->set();
 // $page->route('/', function () {
 //     return view('admin.home');
 // });
 $page->addSections([
     new Section('general', 'General'),
-    new Section('social', 'Social')
+    new Section('social', 'Social'),
+    new Section('footer', 'Footer')
 ]);
 $page->addSettings([
     'general' => [
         Field::text('title', [
-            'rules' => 'required|min:6'
+            // 'rules' => 'required|min:6'
         ]),
         Field::textarea('comment')
     ],
     'social' => [
         Field::text('twitter', [
-            'rules' => 'required|url'
+            // 'rules' => 'required|url'
+        ])
+    ],
+    'footer' => [
+        Field::editor('footer_text', [
+            'settings' => [
+                'wpautop' => false
+            ]
         ])
     ]
 ]);
@@ -179,6 +187,7 @@ add_action( 'carbon_fields_register_fields', 'myNewBlock'  );
 function myNewBlock(){
     Block::make( __( 'My Shiny Gutenberg Block' ) )
 	->add_fields( array(
+        Field::make( 'text', 'anchor', __( 'Anchor (Link menu items to this block with: #[Anchor])' ) ),
 		Field::make( 'text', 'heading', __( 'Block Heading' ) ),
 		Field::make( 'image', 'image', __( 'Block Image' ) ),
 		Field::make( 'rich_text', 'content', __( 'Block Content' ) ),
@@ -212,6 +221,7 @@ function myNewBlock(){
 	->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
 		?>
 
+        <a class="wtanchor" id="<?php echo esc_html( $fields['anchor'] ); ?>"></a>
 		<div class="wtblock">
 			<div class="wtblock__heading">
 				<h1><?php echo esc_html( $fields['heading'] ); ?></h1>
