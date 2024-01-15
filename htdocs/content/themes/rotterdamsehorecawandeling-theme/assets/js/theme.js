@@ -1,5 +1,9 @@
 const wtBlocks = document.querySelectorAll('.wtBlock');
 const anchors = document.querySelectorAll('.wtanchor');
+const toTopBtn = document.querySelector('#toTop');
+const burgerCheckbox_selector = '#burger-check';
+const burgerCheckbox = document.querySelector(burgerCheckbox_selector);
+const burgerMenuButtons = document.querySelectorAll(burgerCheckbox_selector + ' ~ div ul li a');
 const bodyRect = document.body.getBoundingClientRect();
 let anchorPositions = [];
 anchors.forEach(el => {
@@ -40,20 +44,41 @@ function getSectionInViewport(positionOfScroll) {
 
 function renderView() {
     let scrollPos = this.scrollY;
-// console.log(scrollPos);
     let extraSpace = 700; // anchor is further down the page, so some extra space for image to show up.
     let sectionInViewport = getSectionInViewport(scrollPos+extraSpace);
-// console.log(sectionInViewport);
     setActiveImage(sectionInViewport);
 }
 
+/***** To Top Button *************************/
+toTopBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo(0, 0);
+});
+if(window.scrollY > 800) {
+    toTopBtn.classList.add('show');
+}
+/*********************************************/
+
+/***** Hide burger-menu when item is clicked ************/
+burgerMenuButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        burgerCheckbox.checked = false;
+        let event = new Event('change');
+        burgerCheckbox.dispatchEvent(event);
+    });
+});
+/********************************************************/
+
 window.addEventListener("scroll",
-debounce(function(e){
-    // function() {
-        console.log('scroll!');
+    debounce(function(e){
+        let fromTop = window.scrollY;
+        if(fromTop > 400) {
+            toTopBtn.classList.add('show');
+        } else {
+            toTopBtn.classList.remove('show');
+        }
         renderView();
-    // }
-})
+    })
 );
 function debounce(func){
     var timer;

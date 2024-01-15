@@ -86,6 +86,8 @@
     </footer><!-- #colophon -->
 </div><!-- #page -->
 
+<a href="" id="toTop"></a>
+
 @footer
 
 @env('local')

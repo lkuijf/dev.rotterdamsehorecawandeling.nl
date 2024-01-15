@@ -108,7 +108,6 @@ html {
 /*--------------------------------------------------------------
 # Custom styles
 --------------------------------------------------------------*/
-@import "wt/burger-menu.adapter";
 
 $sbp1_desktop: 1200px; // ScreenBreakpoint for Desktops
 $sbp2_laptop: 1024px; // ScreenBreakpoint for Laptops
@@ -122,8 +121,12 @@ $extraAnchorSpacingMobile: 20px;
 $colorGreen: #008100;
 $colorGreenDark: #005a00;
 $colorBlackForText: #404040; // same as theme
+$colorBlack: $colorBlackForText;
 
 $fontFamily: 'Poppins', sans-serif;
+
+@import "wt/burger-menu.adapter";
+@import 'wt/totop-btn';
 
 body {
 	background-color: #EEE;

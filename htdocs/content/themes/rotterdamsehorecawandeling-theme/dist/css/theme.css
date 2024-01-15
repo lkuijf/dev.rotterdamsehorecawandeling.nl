@@ -914,6 +914,34 @@ html {
     Burger-menu
     DO NOT ALTER THIS MIXIN
 */
+#toTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  right: 40px;
+  bottom: -80px;
+  z-index: 102;
+  cursor: default;
+  background-color: #404040;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: bottom 0.3s ease;
+}
+#toTop:before {
+  content: ">";
+  font-size: 40px;
+  color: #FFF;
+}
+#toTop.show {
+  bottom: 40px;
+}
+#toTop:hover:before {
+  color: #008100;
+}
+
 body {
   background-color: #EEE;
   padding-top: 250px;
