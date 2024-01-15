@@ -927,6 +927,10 @@ img {
   vertical-align: middle;
 }
 
+ul, ol {
+  margin: 0;
+}
+
 header#masthead {
   position: fixed;
   z-index: 3;
@@ -982,6 +986,13 @@ footer#colophon .site-info {
 
 #page {
   font-family: "Poppins", sans-serif;
+}
+#page a {
+  color: #008100;
+  text-decoration: none;
+}
+#page a:hover {
+  text-decoration: underline;
 }
 
 #content {

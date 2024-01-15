@@ -135,6 +135,9 @@ html {
 img {
     vertical-align: middle; // removes bottom 3px margin.
 }
+ul, ol {
+	margin: 0; // overwriting elements/_lists.scss
+}
 header#masthead {
 	position: fixed;
 	z-index: 3;
@@ -210,6 +213,13 @@ footer#colophon {
 }
 #page {
 	font-family: $fontFamily;
+	a {
+		color: $colorGreen;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }
 #content {
 	max-width: 1200px;
