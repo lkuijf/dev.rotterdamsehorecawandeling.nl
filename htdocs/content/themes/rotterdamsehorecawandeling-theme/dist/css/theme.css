@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 Themosis boilerplate is based on Underscores https://underscores.me/.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
@@ -949,7 +950,7 @@ header#masthead .site-branding .site-title, header#masthead .site-branding .site
 a.wtanchor {
   display: block;
   position: relative;
-  top: -250px;
+  top: -350px;
   visibility: hidden;
 }
 
@@ -1128,29 +1129,37 @@ footer#colophon .site-info {
   .main-navigation > div ul li {
     border-color: #005a00;
     border-left: 2px solid;
+    background-color: #FFF;
   }
   .main-navigation > div ul li:first-child {
     border-top: 2px solid;
+    padding-top: 30px;
   }
   .main-navigation > div ul li:last-child {
     border-bottom: 2px solid;
+    padding-bottom: 30px;
   }
   .main-navigation > div ul li a {
-    background-color: #FFF;
-    color: #000;
-    font-size: 1.2em;
+    color: #404040;
+    font-size: 1.3em;
+    line-height: 1em;
+    display: flex;
+    text-indent: 5px;
     padding: 15px 0;
     text-decoration: none;
   }
-  .main-navigation > div ul li a:first-letter {
+  .main-navigation > div ul li a:before {
+    content: "• ";
+    font-size: 1.4em;
     font-weight: bold;
     color: #008100;
+    text-indent: 50px;
+    line-height: 0.7em;
   }
 }
 @media (max-width: 768px) and (max-width: 480px) {
   .main-navigation > div ul li a {
     font-size: 1.1em;
-    padding: 10px 0;
   }
 }
 @media (max-width: 768px) {
@@ -1165,6 +1174,9 @@ footer#colophon .site-info {
   }
   .main-navigation > div ul li ul li a {
     font-size: 1em;
+  }
+  .main-navigation #burger-check:checked ~ div ul {
+    width: 80%;
   }
 }
 @media (min-width: 769px) {

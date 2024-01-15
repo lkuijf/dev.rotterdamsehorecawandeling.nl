@@ -117,8 +117,10 @@ $sbp4_mobile: 480px; // ScreenBreakpoint for Mobile devices
 
 $logoArea: 200px;
 $menuHeight: 50px;
+$extraAnchorSpacing: 100px;
 $colorGreen: #008100;
 $colorGreenDark: #005a00;
+$colorBlackForText: #404040; // same as theme
 
 $fontFamily: 'Poppins', sans-serif;
 
@@ -175,7 +177,7 @@ header#masthead {
 a.wtanchor {
 	display: block;
     position: relative;
-    top: calc(($logoArea + $menuHeight) * -1);
+    top: calc(($logoArea + $menuHeight + $extraAnchorSpacing) * -1);
     visibility: hidden;
 }
 footer#colophon {
@@ -283,7 +285,6 @@ footer#colophon {
 	@media (max-width: $sbp3_tablet) {
 		@include burgerMenuAdapter;
 		> div ul {
-			// background-color: #333;
 			z-index: 11;
 			text-align: center;
 			display: flex;
@@ -291,21 +292,26 @@ footer#colophon {
 			li {
 				border-color: $colorGreenDark;
 				border-left: 2px solid;
-				&:first-child {border-top: 2px solid;}
-				&:last-child {border-bottom: 2px solid;}
+				background-color: #FFF;
+				&:first-child {border-top: 2px solid;padding-top: 30px;}
+				&:last-child {border-bottom: 2px solid;padding-bottom: 30px;}
 				a {
-					background-color: #FFF;
-					color: #000;
-					font-size: 1.2em;
-					// font-style: italic;
-					&:first-letter {
+					color: $colorBlackForText;
+					font-size: 1.3em;
+					line-height: 1em;
+					display: flex;
+					text-indent: 5px;
+					&:before {
+						content: '• ';
+						font-size: 1.4em;
 						font-weight: bold;
 						color: $colorGreen;
+						text-indent: 50px;
+						line-height: .7em;
 					}
 					padding: 15px 0;
 					@media (max-width: $sbp4_mobile) {
 						font-size: 1.1em;
-						padding: 10px 0;
 					}
 					text-decoration: none;
 					&:hover {
@@ -322,6 +328,9 @@ footer#colophon {
 					}
 				}
 			}
+		}
+		#burger-check:checked ~ div ul {
+			width: 80%;
 		}
 	}
 	@media (min-width: ($sbp3_tablet + 1)) {
