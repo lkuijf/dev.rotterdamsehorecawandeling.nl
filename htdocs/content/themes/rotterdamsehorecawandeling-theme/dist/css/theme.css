@@ -1018,6 +1018,12 @@ footer#colophon .site-info {
   padding-top: 400px;
   padding-bottom: 400px;
 }
+@media (max-width: 480px) {
+  #content .wtBlock .wtbContent {
+    padding-top: 300px;
+    padding-bottom: 300px;
+  }
+}
 #content .wtBlock .wtbContent .wtbText {
   padding-left: 40px;
   padding-right: 40px;

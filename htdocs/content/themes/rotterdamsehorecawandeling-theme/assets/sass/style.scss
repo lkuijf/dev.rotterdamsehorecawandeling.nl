@@ -239,9 +239,12 @@ footer#colophon {
 			}
 		}
 		.wtbContent {
-			// min-height: 800px;
 			padding-top: 400px;
 			padding-bottom: 400px;
+			@media (max-width: $sbp4_mobile) {
+				padding-top: 300px;
+				padding-bottom: 300px;
+			}
 			.wtbText {
 				padding-left: 40px;
 				padding-right: 40px;
