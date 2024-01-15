@@ -1011,7 +1011,7 @@ footer#colophon .site-info {
 }
 #content .wtBlock .wtbImage {
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   transition: opacity 0.3s linear;
   position: fixed;
   top: 250px;
@@ -1030,6 +1030,11 @@ footer#colophon .site-info {
 }
 #content .wtBlock .wtbImage.activeImage {
   opacity: 1;
+}
+@media (max-width: 480px) {
+  #content .wtBlock:first-of-type .wtbContent {
+    padding-top: 450px;
+  }
 }
 #content .wtBlock .wtbContent {
   padding-top: 400px;

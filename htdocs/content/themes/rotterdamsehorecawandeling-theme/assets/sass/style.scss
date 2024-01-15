@@ -236,7 +236,7 @@ footer#colophon {
 	.wtBlock {
 		.wtbImage {
 			background-size: cover;
-			background-position: center top;
+			background-position: center center;
 			transition: opacity 0.3s linear;
 			position: fixed;
 			top: calc($logoArea + $menuHeight);
@@ -252,6 +252,13 @@ footer#colophon {
 			}
 			&.activeImage {
 				opacity: 1;
+			}
+		}
+		&:first-of-type {
+			.wtbContent {
+				@media (max-width: $sbp4_mobile) {
+					padding-top: 450px;
+				}
 			}
 		}
 		.wtbContent {
