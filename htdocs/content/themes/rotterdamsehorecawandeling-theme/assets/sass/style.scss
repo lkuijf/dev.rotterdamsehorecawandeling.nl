@@ -365,12 +365,13 @@ footer#colophon {
 					padding: 0 5px;
 					line-height: $menuHeight;
 					text-decoration: none;
-					color: #FFF;
+					color: #FFF !important;
 					// &.activeButton {
 					// 	background-color: #005700;
 					// }
 					&:hover {
-						background-color: #005a00;
+						background-color: $colorGreenDark !important;
+						text-decoration: none !important;
 					}
 				}
 			}

@@ -1214,9 +1214,10 @@ footer#colophon .site-info {
     padding: 0 5px;
     line-height: 50px;
     text-decoration: none;
-    color: #FFF;
+    color: #FFF !important;
   }
   .main-navigation > div ul li a:hover {
-    background-color: #005a00;
+    background-color: #005a00 !important;
+    text-decoration: none !important;
   }
 }
