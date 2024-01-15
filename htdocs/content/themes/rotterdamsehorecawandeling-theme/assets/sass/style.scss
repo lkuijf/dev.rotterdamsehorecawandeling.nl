@@ -117,7 +117,8 @@ $sbp4_mobile: 480px; // ScreenBreakpoint for Mobile devices
 
 $logoArea: 200px;
 $menuHeight: 50px;
-$extraAnchorSpacing: 100px;
+$extraAnchorSpacing: 120px;
+$extraAnchorSpacingMobile: 20px;
 $colorGreen: #008100;
 $colorGreenDark: #005a00;
 $colorBlackForText: #404040; // same as theme
@@ -178,6 +179,9 @@ a.wtanchor {
 	display: block;
     position: relative;
     top: calc(($logoArea + $menuHeight + $extraAnchorSpacing) * -1);
+	@media (max-width: $sbp3_tablet) {
+		top: calc(($logoArea + $menuHeight + $extraAnchorSpacingMobile) * -1);
+	}
     visibility: hidden;
 }
 footer#colophon {

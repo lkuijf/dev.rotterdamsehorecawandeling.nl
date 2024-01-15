@@ -950,8 +950,13 @@ header#masthead .site-branding .site-title, header#masthead .site-branding .site
 a.wtanchor {
   display: block;
   position: relative;
-  top: -350px;
+  top: -370px;
   visibility: hidden;
+}
+@media (max-width: 768px) {
+  a.wtanchor {
+    top: -270px;
+  }
 }
 
 footer#colophon {
