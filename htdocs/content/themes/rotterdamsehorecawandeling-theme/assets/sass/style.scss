@@ -256,6 +256,7 @@ footer#colophon {
 		}
 		&:first-of-type {
 			.wtbContent {
+				padding-top: 650px;
 				@media (max-width: $sbp4_mobile) {
 					padding-top: 450px;
 				}

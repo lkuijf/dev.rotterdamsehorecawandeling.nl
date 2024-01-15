@@ -1031,6 +1031,9 @@ footer#colophon .site-info {
 #content .wtBlock .wtbImage.activeImage {
   opacity: 1;
 }
+#content .wtBlock:first-of-type .wtbContent {
+  padding-top: 650px;
+}
 @media (max-width: 480px) {
   #content .wtBlock:first-of-type .wtbContent {
     padding-top: 450px;

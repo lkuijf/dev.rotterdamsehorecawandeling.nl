@@ -41,7 +41,7 @@ function getSectionInViewport(positionOfScroll) {
 function renderView() {
     let scrollPos = this.scrollY;
 // console.log(scrollPos);
-    let extraSpace = 600; // anchor is further down the page, so some extra space for image to show up.
+    let extraSpace = 700; // anchor is further down the page, so some extra space for image to show up.
     let sectionInViewport = getSectionInViewport(scrollPos+extraSpace);
 // console.log(sectionInViewport);
     setActiveImage(sectionInViewport);
