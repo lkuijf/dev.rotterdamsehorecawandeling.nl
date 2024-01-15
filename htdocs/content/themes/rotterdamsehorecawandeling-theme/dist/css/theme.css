@@ -906,6 +906,13 @@ html {
     box-sizing: inherit;
 }
 */
+/*--------------------------------------------------------------
+# Custom styles
+--------------------------------------------------------------*/
+/*
+    Burger-menu
+    DO NOT ALTER THIS MIXIN
+*/
 body {
   background-color: #EEE;
   padding-top: 250px;
@@ -938,28 +945,6 @@ header#masthead .site-branding img {
 header#masthead .site-branding .site-title, header#masthead .site-branding .site-description {
   display: none;
 }
-header#masthead ul {
-  margin: 0;
-  padding: 0;
-  background-color: #008100;
-  display: flex;
-  list-style-type: none;
-}
-header#masthead ul li {
-  flex: 1 1 auto;
-  text-align: center;
-}
-header#masthead ul li a {
-  display: block;
-  height: 100%;
-  padding: 0 5px;
-  line-height: 50px;
-  text-decoration: none;
-  color: #FFF;
-}
-header#masthead ul li a.activeButton {
-  background-color: #005700;
-}
 
 a.wtanchor {
   display: block;
@@ -989,12 +974,15 @@ footer#colophon .site-info {
   }
 }
 
+#page {
+  font-family: "Poppins", sans-serif;
+}
+
 #content {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
 }
 @media (max-width: 480px) {
   #content {
@@ -1014,6 +1002,11 @@ footer#colophon .site-info {
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+@media (max-width: 768px) {
+  #content .wtBlock .wtbImage {
+    top: 200px;
+  }
 }
 #content .wtBlock .wtbImage.hiddenImage {
   opacity: 0;
@@ -1065,4 +1058,130 @@ footer#colophon .site-info {
 }
 #content .wtBlock .wtbContent .wtbText .wtbInnerText .wtb_content :last-child {
   margin-bottom: 0;
+}
+
+.main-navigation #burger-check, .main-navigation .burger-label {
+  display: none;
+}
+@media (max-width: 768px) {
+  .main-navigation .burger-label {
+    color: transparent; /* removes blinking cursor */
+    display: block;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 11px;
+    right: 11px;
+  }
+  .main-navigation .burger-label span {
+    margin: 0;
+    margin-bottom: 7px;
+    height: 5px;
+    background: #000;
+    border: 1px solid #000;
+    border-radius: 3px;
+    position: relative;
+    display: block;
+  }
+  .main-navigation #burger-check:checked ~ .burger-label span:nth-child(2) {
+    display: none;
+  }
+  .main-navigation #burger-check:checked ~ .burger-label span:nth-child(1) {
+    transform: rotate(45deg);
+    transition-duration: 0.3s;
+    width: 45px;
+    top: 12px;
+    left: -6px;
+  }
+  .main-navigation #burger-check:checked ~ .burger-label span:nth-child(3) {
+    transform: rotate(-45deg);
+    transition-duration: 0.3s;
+    width: 45px;
+    top: 0px;
+    left: -6px;
+  }
+  .main-navigation #burger-check ~ div ul {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0px;
+    transition: width 0.5s;
+    position: absolute;
+    top: 54px;
+    right: 0;
+    z-index: 1;
+  }
+  .main-navigation #burger-check:checked ~ div ul {
+    width: 90%;
+  }
+  .main-navigation > div ul {
+    z-index: 11;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-navigation > div ul li {
+    border-color: #005a00;
+    border-left: 2px solid;
+  }
+  .main-navigation > div ul li:first-child {
+    border-top: 2px solid;
+  }
+  .main-navigation > div ul li:last-child {
+    border-bottom: 2px solid;
+  }
+  .main-navigation > div ul li a {
+    background-color: #FFF;
+    color: #000;
+    font-size: 1.2em;
+    padding: 15px 0;
+    text-decoration: none;
+  }
+  .main-navigation > div ul li a:first-letter {
+    font-weight: bold;
+    color: #008100;
+  }
+}
+@media (max-width: 768px) and (max-width: 480px) {
+  .main-navigation > div ul li a {
+    font-size: 1.1em;
+    padding: 10px 0;
+  }
+}
+@media (max-width: 768px) {
+  .main-navigation > div ul li a:hover {
+    color: #005a00;
+  }
+  .main-navigation > div ul li ul {
+    padding-top: 10px;
+  }
+  .main-navigation > div ul li ul li {
+    padding: 10px 0;
+  }
+  .main-navigation > div ul li ul li a {
+    font-size: 1em;
+  }
+}
+@media (min-width: 769px) {
+  .main-navigation > div ul {
+    margin: 0;
+    padding: 0;
+    background-color: #008100;
+    display: flex;
+    list-style-type: none;
+  }
+  .main-navigation > div ul li {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  .main-navigation > div ul li a {
+    display: block;
+    height: 100%;
+    padding: 0 5px;
+    line-height: 50px;
+    text-decoration: none;
+    color: #FFF;
+  }
+  .main-navigation > div ul li a:hover {
+    background-color: #005a00;
+  }
 }

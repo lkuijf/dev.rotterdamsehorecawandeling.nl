@@ -105,6 +105,11 @@ html {
 }
 */
 
+/*--------------------------------------------------------------
+# Custom styles
+--------------------------------------------------------------*/
+@import "wt/burger-menu.adapter";
+
 $sbp1_desktop: 1200px; // ScreenBreakpoint for Desktops
 $sbp2_laptop: 1024px; // ScreenBreakpoint for Laptops
 $sbp3_tablet: 768px; // // ScreenBreakpoint for iPads/Tablets
@@ -112,6 +117,8 @@ $sbp4_mobile: 480px; // ScreenBreakpoint for Mobile devices
 
 $logoArea: 200px;
 $menuHeight: 50px;
+$colorGreen: #008100;
+$colorGreenDark: #005a00;
 
 $fontFamily: 'Poppins', sans-serif;
 
@@ -142,37 +149,28 @@ header#masthead {
 			display: none;
 		}
 	}
-	ul {
-		margin: 0;
-		padding: 0;
-		background-color: #008100;
-		display: flex;
-		list-style-type: none;
-		li {
-			flex: 1 1 auto;
-			text-align: center;
-			a {
-				display: block;
-				height: 100%;
-				padding: 0 5px;
-				line-height: $menuHeight;
-				text-decoration: none;
-				color: #FFF;
-				&.activeButton {
-					background-color: #005700;
-				}
-				// @media (min-width: $screenBreakpoint+1) {
-				//     &:hover {
-				//         background-color: #005700;
-				//     }
-				// }
-				// @media (max-width: $screenBreakpointMobiles) {
-				//     line-height: $menuHeight - 25px;
-				//     font-size: 14px;
-				// }
-			}
-		}
-	}
+	// ul {
+	// 	margin: 0;
+	// 	padding: 0;
+	// 	background-color: #008100;
+	// 	display: flex;
+	// 	list-style-type: none;
+	// 	li {
+	// 		flex: 1 1 auto;
+	// 		text-align: center;
+	// 		a {
+	// 			display: block;
+	// 			height: 100%;
+	// 			padding: 0 5px;
+	// 			line-height: $menuHeight;
+	// 			text-decoration: none;
+	// 			color: #FFF;
+	// 			&.activeButton {
+	// 				background-color: #005700;
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 a.wtanchor {
 	display: block;
@@ -204,12 +202,15 @@ footer#colophon {
     //     }
     // }
 }
+#page {
+	font-family: $fontFamily;
+}
 #content {
 	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 16px;
-	font-family: $fontFamily;
+	
 	@media (max-width: $sbp4_mobile) {font-size: 14px;}
 
 	header.entry-header {
@@ -223,6 +224,9 @@ footer#colophon {
 			transition: opacity 0.3s linear;
 			position: fixed;
 			top: calc($logoArea + $menuHeight);
+			@media (max-width: $sbp3_tablet) {
+				top: calc($logoArea);
+			}
 			left: 0;
 			width: 100%;
 			height: 100%;
@@ -255,7 +259,7 @@ footer#colophon {
 					.wtb_heading {
 						h1 {
 							margin-top: 0;
-							color: #008100;
+							color: $colorGreen;
 						}
 					}
 					.wtb_content {
@@ -267,5 +271,121 @@ footer#colophon {
 			}
 		}
 	}
+}
 
+.main-navigation {
+	#burger-check, .burger-label {
+		display: none;
+	}
+	@media (max-width: $sbp3_tablet) {
+		@include burgerMenuAdapter;
+		> div ul {
+			// background-color: #333;
+			z-index: 11;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			li {
+				border-color: $colorGreenDark;
+				border-left: 2px solid;
+				&:first-child {border-top: 2px solid;}
+				&:last-child {border-bottom: 2px solid;}
+				a {
+					background-color: #FFF;
+					color: #000;
+					font-size: 1.2em;
+					// font-style: italic;
+					&:first-letter {
+						font-weight: bold;
+						color: $colorGreen;
+					}
+					padding: 15px 0;
+					@media (max-width: $sbp4_mobile) {
+						font-size: 1.1em;
+						padding: 10px 0;
+					}
+					text-decoration: none;
+					&:hover {
+						color: $colorGreenDark;
+					}
+				}
+				ul {
+					padding-top: 10px;
+					li {
+						padding: 10px 0;
+						a {
+							font-size: 1em;
+						}
+					}
+				}
+			}
+		}
+	}
+	@media (min-width: ($sbp3_tablet + 1)) {
+
+		> div ul {
+			margin: 0;
+			padding: 0;
+			background-color: $colorGreen;
+			display: flex;
+			list-style-type: none;
+			li {
+				flex: 1 1 auto;
+				text-align: center;
+				a {
+					display: block;
+					height: 100%;
+					padding: 0 5px;
+					line-height: $menuHeight;
+					text-decoration: none;
+					color: #FFF;
+					// &.activeButton {
+					// 	background-color: #005700;
+					// }
+					&:hover {
+						background-color: #005a00;
+					}
+				}
+			}
+		}
+
+
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	justify-content: space-around;
+	// 	ul {
+	// 		display: flex;
+	// 		gap: 40px;
+	// 		@media (max-width: $sbp1_desktop) {gap: 15px;}
+	// 		li {
+	// 			position: relative;
+	// 			a {
+	// 				@include mainNavButton;
+	// 				@media (max-width: $sbp1_desktop) {font-size: 1.1em;}
+	// 			}
+	// 			ul {
+	// 				display: none;
+	// 				left: -36px;
+	// 				white-space: nowrap;
+	// 				position: absolute;
+	// 				top: 30px;
+	// 				background-color: $colorWhite;
+	// 				@include borderRadius;
+	// 				padding: 20px;
+	// 				li {
+	// 					padding: 5px 0;
+	// 					a {
+	// 						color: $colorBlack;
+	// 						padding: 7px 16px 8px 16px;
+	// 					}
+	// 				}
+	// 			}
+	// 			&:hover {
+	// 				ul {
+	// 					display: block;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	}
 }

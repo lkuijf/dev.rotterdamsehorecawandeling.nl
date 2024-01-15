@@ -27,8 +27,30 @@
             @endif
         </div><!-- .site-branding -->
 
+
+        {{-- <nav class="mainNav">
+            <input type="checkbox" id="burger-check">
+            <label for="burger-check" class="burger-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            {!! $data['html_menu'] !!}
+        </nav> --}}
+
+
         <nav id="site-navigation" class="main-navigation">
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">{{ esc_html__('Primary Menu', THEME_TD) }}</button>
+
+
+            {{-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">{{ esc_html__('Primary Menu', THEME_TD) }}</button> --}}
+            <input type="checkbox" id="burger-check">
+            <label for="burger-check" class="burger-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+
             {!! wp_nav_menu([
                 'theme_location' => 'menu-1',
                 'menu_id' => 'primary-menu',
