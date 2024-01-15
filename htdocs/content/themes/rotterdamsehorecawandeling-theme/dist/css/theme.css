@@ -1156,7 +1156,7 @@ footer#colophon .site-info {
     padding-bottom: 30px;
   }
   .main-navigation > div ul li a {
-    color: #404040;
+    color: #404040 !important;
     font-size: 1.3em;
     line-height: 1em;
     display: flex;
@@ -1180,7 +1180,8 @@ footer#colophon .site-info {
 }
 @media (max-width: 768px) {
   .main-navigation > div ul li a:hover {
-    color: #005a00;
+    color: #005a00 !important;
+    text-decoration: none !important;
   }
   .main-navigation > div ul li ul {
     padding-top: 10px;

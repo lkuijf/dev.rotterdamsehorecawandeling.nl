@@ -310,7 +310,7 @@ footer#colophon {
 				&:first-child {border-top: 2px solid;padding-top: 30px;}
 				&:last-child {border-bottom: 2px solid;padding-bottom: 30px;}
 				a {
-					color: $colorBlackForText;
+					color: $colorBlackForText !important;
 					font-size: 1.3em;
 					line-height: 1em;
 					display: flex;
@@ -329,7 +329,8 @@ footer#colophon {
 					}
 					text-decoration: none;
 					&:hover {
-						color: $colorGreenDark;
+						color: $colorGreenDark !important;
+						text-decoration: none !important;
 					}
 				}
 				ul {
