@@ -15,11 +15,8 @@
     // box-shadow: 0px 0px 10px #FFF;
     transition: bottom 0.3s ease;
     &:before {
-        // font-family: "wt_media_events";
-        // content: '\e800';
-
-        content: '>';
-
+        font-family: "rotterdamsehorecawandeling";
+        content: '\e800';
         font-size: 40px;
         color: #FFF;
     }

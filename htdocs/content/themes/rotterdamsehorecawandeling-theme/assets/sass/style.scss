@@ -123,6 +123,20 @@ $colorBlack: $colorBlackForText;
 
 $fontFamily: 'Poppins', sans-serif;
 
+@font-face {
+    font-family: 'rotterdamsehorecawandeling';
+    src: url('/content/themes/rotterdamsehorecawandeling-theme/assets/fontello/font/rotterdamsehorecawandeling.eot');
+    src: url('/content/themes/rotterdamsehorecawandeling-theme/assets/fontello/font/rotterdamsehorecawandeling.eot#iefix') format('embedded-opentype'),
+         url('/content/themes/rotterdamsehorecawandeling-theme/assets/fontello/font/rotterdamsehorecawandeling.woff2') format('woff2'),
+         url('/content/themes/rotterdamsehorecawandeling-theme/assets/fontello/font/rotterdamsehorecawandeling.woff') format('woff'),
+         url('/content/themes/rotterdamsehorecawandeling-theme/assets/fontello/font/rotterdamsehorecawandeling.ttf') format('truetype'),
+         url('/content/themes/rotterdamsehorecawandeling-theme/assets/fontello/font/rotterdamsehorecawandeling.svg#rotterdamsehorecawandeling') format('svg');
+    font-weight: normal;                    
+    font-style: normal;
+    font-display: swap;
+}
+
+
 @import "wt/burger-menu.adapter";
 @import 'wt/totop-btn';
 
