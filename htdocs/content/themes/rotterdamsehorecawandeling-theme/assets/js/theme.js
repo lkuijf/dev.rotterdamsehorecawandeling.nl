@@ -29,7 +29,12 @@ function setActiveImage(imageIndex = 0) {
 
 function getSectionInViewport(positionOfScroll) {
     let shownSection = false;
-    if(positionOfScroll <= anchorPositions[0]) shownSection = -1; // When no wtBlock in view, show no image
+    const firstBlock = document.querySelector('#primary #main article .entry-content :first-child'); // "#primary #main article" just to be sure
+    if(positionOfScroll <= anchorPositions[0]) {
+        // When no wtBlock in view, show no image. UNLESS .wtBlock element is the first-child of .entry-content (no other Gutenberg blocks are present), than show the first image.
+        if(firstBlock.className == 'wtBlock') shownSection = 0;
+        else shownSection = -1;
+    }
     if(positionOfScroll > anchorPositions[(anchorPositions.length - 1)]) shownSection = (anchorPositions.length - 1); // When outside of all wtBlocks, just set the last image to display
     if(shownSection === false) { // we are somewhere within the sections, search for correct one
         anchorPositions.forEach((anchorPos, i) => {
@@ -43,10 +48,14 @@ function getSectionInViewport(positionOfScroll) {
 }
 
 function renderView() {
-    let scrollPos = this.scrollY;
-    let extraSpace = 700; // anchor is further down the page, so some extra space for image to show up.
-    let sectionInViewport = getSectionInViewport(scrollPos+extraSpace);
-    setActiveImage(sectionInViewport);
+    if(wtBlocks.length) { // only when parallax blocks present on page
+        let blockToMeasure = wtBlocks[0];
+        if(wtBlocks[1]) blockToMeasure = wtBlocks[1]; // first block has more padding, for better showing of first image. Taking the second for better representation.
+        let wtbContentPaddingTop = parseInt(window.getComputedStyle(blockToMeasure.querySelector('.wtbContent'), null).getPropertyValue('padding-top'));
+        let scrollPos = this.scrollY;
+        let sectionInViewport = getSectionInViewport(scrollPos+wtbContentPaddingTop);
+        setActiveImage(sectionInViewport);
+    }
 }
 
 /***** To Top Button *************************/

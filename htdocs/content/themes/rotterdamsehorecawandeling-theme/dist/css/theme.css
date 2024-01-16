@@ -982,12 +982,28 @@ header#masthead .site-branding .site-title, header#masthead .site-branding .site
 a.wtanchor {
   display: block;
   position: relative;
-  top: -370px;
+  /* Some extra responsive spacing, because padding changes of the content */
+  top: -390px;
   visibility: hidden;
+}
+@media (max-width: 1200px) {
+  a.wtanchor {
+    top: -370px;
+  }
+}
+@media (max-width: 1024px) {
+  a.wtanchor {
+    top: -350px;
+  }
 }
 @media (max-width: 768px) {
   a.wtanchor {
-    top: -270px;
+    top: -290px;
+  }
+}
+@media (max-width: 480px) {
+  a.wtanchor {
+    top: -280px;
   }
 }
 
@@ -1034,8 +1050,11 @@ footer#colophon .site-info {
     font-size: 14px;
   }
 }
-#content header.entry-header {
+#content #primary #main article .entry-header {
   display: none;
+}
+#content #primary #main article .entry-content {
+  margin: 0;
 }
 #content .wtBlock .wtbImage {
   background-size: cover;

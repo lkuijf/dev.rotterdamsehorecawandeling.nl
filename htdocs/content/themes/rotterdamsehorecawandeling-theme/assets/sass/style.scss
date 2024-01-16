@@ -116,8 +116,6 @@ $sbp4_mobile: 480px; // ScreenBreakpoint for Mobile devices
 
 $logoArea: 200px;
 $menuHeight: 50px;
-$extraAnchorSpacing: 120px;
-$extraAnchorSpacingMobile: 20px;
 $colorGreen: #008100;
 $colorGreenDark: #005a00;
 $colorBlackForText: #404040; // same as theme
@@ -142,6 +140,9 @@ ul, ol {
 	margin: 0; // overwriting elements/_lists.scss
 }
 header#masthead {
+	
+	// visibility: hidden;
+
 	position: fixed;
 	z-index: 3;
 	top: 0px;
@@ -158,36 +159,18 @@ header#masthead {
 			display: none;
 		}
 	}
-	// ul {
-	// 	margin: 0;
-	// 	padding: 0;
-	// 	background-color: #008100;
-	// 	display: flex;
-	// 	list-style-type: none;
-	// 	li {
-	// 		flex: 1 1 auto;
-	// 		text-align: center;
-	// 		a {
-	// 			display: block;
-	// 			height: 100%;
-	// 			padding: 0 5px;
-	// 			line-height: $menuHeight;
-	// 			text-decoration: none;
-	// 			color: #FFF;
-	// 			&.activeButton {
-	// 				background-color: #005700;
-	// 			}
-	// 		}
-	// 	}
-	// }
 }
 a.wtanchor {
 	display: block;
     position: relative;
-    top: calc(($logoArea + $menuHeight + $extraAnchorSpacing) * -1);
-	@media (max-width: $sbp3_tablet) {
-		top: calc(($logoArea + $menuHeight + $extraAnchorSpacingMobile) * -1);
-	}
+
+	/* Some extra responsive spacing, because padding changes of the content */
+	top: calc(($logoArea + $menuHeight + 140px) * -1);
+	@media (max-width: $sbp1_desktop) {top: calc(($logoArea + $menuHeight + 120px) * -1);}
+	@media (max-width: $sbp2_laptop) {top: calc(($logoArea + $menuHeight + 100px) * -1);}
+	@media (max-width: $sbp3_tablet) {top: calc(($logoArea + 90px) * -1);}
+	@media (max-width: $sbp4_mobile) {top: calc(($logoArea + 80px) * -1);}
+
     visibility: hidden;
 }
 footer#colophon {
@@ -205,14 +188,6 @@ footer#colophon {
 		margin-left: auto;
 		margin-right: auto;
 	}
-
-    // div {
-    //     @include innerTextCentering;
-    //     padding: 50px;
-    //     @media (max-width: $screenBreakpointMobiles) {
-    //         padding: 20px;
-    //     }
-    // }
 }
 #page {
 	font-family: $fontFamily;
@@ -232,8 +207,18 @@ footer#colophon {
 	
 	@media (max-width: $sbp4_mobile) {font-size: 14px;}
 
-	header.entry-header {
-		display: none;
+	#primary { // wp page structure
+		#main {
+			article {
+				.entry-header {
+					display: none;
+				}
+				.entry-content {
+					margin: 0; // reset margin
+				}
+				// .entry-footer {}
+			}
+		}
 	}
 
 	.wtBlock {
@@ -360,7 +345,6 @@ footer#colophon {
 		}
 	}
 	@media (min-width: ($sbp3_tablet + 1)) {
-
 		> div ul {
 			margin: 0;
 			padding: 0;
@@ -377,9 +361,6 @@ footer#colophon {
 					line-height: $menuHeight;
 					text-decoration: none;
 					color: #FFF !important;
-					// &.activeButton {
-					// 	background-color: #005700;
-					// }
 					&:hover {
 						background-color: $colorGreenDark !important;
 						text-decoration: none !important;
@@ -387,44 +368,5 @@ footer#colophon {
 				}
 			}
 		}
-
-
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	justify-content: space-around;
-	// 	ul {
-	// 		display: flex;
-	// 		gap: 40px;
-	// 		@media (max-width: $sbp1_desktop) {gap: 15px;}
-	// 		li {
-	// 			position: relative;
-	// 			a {
-	// 				@include mainNavButton;
-	// 				@media (max-width: $sbp1_desktop) {font-size: 1.1em;}
-	// 			}
-	// 			ul {
-	// 				display: none;
-	// 				left: -36px;
-	// 				white-space: nowrap;
-	// 				position: absolute;
-	// 				top: 30px;
-	// 				background-color: $colorWhite;
-	// 				@include borderRadius;
-	// 				padding: 20px;
-	// 				li {
-	// 					padding: 5px 0;
-	// 					a {
-	// 						color: $colorBlack;
-	// 						padding: 7px 16px 8px 16px;
-	// 					}
-	// 				}
-	// 			}
-	// 			&:hover {
-	// 				ul {
-	// 					display: block;
-	// 				}
-	// 			}
-	// 		}
-	// 	}
 	}
 }
