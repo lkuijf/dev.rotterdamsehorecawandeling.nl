@@ -12,18 +12,18 @@ anchors.forEach(el => {
     anchorPositions.push(offset);
 });
 
-renderView();
+
+renderView(true);
+
 
 function setActiveImage(imageIndex = 0) {
     wtBlocks.forEach((block, i) => {
         let classToAdd = 'hiddenImage';
-        let classToRemove = 'activeImage';
         if(i == imageIndex) {
-            classToAdd = 'activeImage';
-            classToRemove = 'hiddenImage';
+            block.querySelector('.wtbImage').classList.remove(classToAdd); // Do not hide images with CSS => JS could be disabled.
+        } else {
+            block.querySelector('.wtbImage').classList.add(classToAdd); // Do not hide images with CSS => JS could be disabled.
         }
-        block.querySelector('.wtbImage').classList.remove(classToRemove); // Do not hide images with CSS => JS could be disabled.
-        block.querySelector('.wtbImage').classList.add(classToAdd); // Do not hide images with CSS => JS could be disabled.
     });
 }
 
@@ -47,7 +47,7 @@ function getSectionInViewport(positionOfScroll) {
     return shownSection;
 }
 
-function renderView() {
+function renderView(onPageLoad = false) {
     if(wtBlocks.length) { // only when parallax blocks present on page
         let blockToMeasure = wtBlocks[0];
         if(wtBlocks[1]) blockToMeasure = wtBlocks[1]; // first block has more padding, for better showing of first image. Taking the second for better representation.
@@ -55,6 +55,14 @@ function renderView() {
         let scrollPos = this.scrollY;
         let sectionInViewport = getSectionInViewport(scrollPos+wtbContentPaddingTop);
         setActiveImage(sectionInViewport);
+    }
+    if(onPageLoad) {
+        // set a delay on the opacity fade effect. On page load this causes strange behavior of the images (on page load).
+        setTimeout(() => {
+            wtBlocks.forEach((block, i) => {
+                block.querySelector('.wtbImage').classList.add('wtbImgTransition');
+            });
+        }, '500');
     }
 }
 

@@ -1059,7 +1059,6 @@ footer#colophon .site-info {
 #content .wtBlock .wtbImage {
   background-size: cover;
   background-position: center center;
-  transition: opacity 0.3s linear;
   position: fixed;
   top: 250px;
   left: 0;
@@ -1072,11 +1071,11 @@ footer#colophon .site-info {
     top: 200px;
   }
 }
+#content .wtBlock .wtbImage.wtbImgTransition {
+  transition: opacity 0.3s linear;
+}
 #content .wtBlock .wtbImage.hiddenImage {
   opacity: 0;
-}
-#content .wtBlock .wtbImage.activeImage {
-  opacity: 1;
 }
 #content .wtBlock:first-of-type .wtbContent {
   padding-top: 650px;
